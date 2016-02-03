@@ -1,0 +1,14 @@
+<dashboard>
+  <label>Tanium Asset Management</label>
+  <description>Asset Management</description>
+  <row>
+    <panel>
+      <table>
+        <title>Assets</title>
+        <searchString>sourcetype=tanium splunk-Asset-MGMT-Common-data | dedup Computer_Serial_Number | table Computer_Name,Computer_Serial_Number,Operating_System,MAC_Address,IP_Address Domain_Name,Last_Logged_In_User,CPU,CPU_Manufacturer, Disk_Total_Space,System_Disk_Free_Space,Free_Memory,Total_Memory,</searchString>
+        <earliestTime/>
+        <latestTime/>
+      </table>
+    </panel>
+  </row>
+</dashboard>
