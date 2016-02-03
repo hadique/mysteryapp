@@ -1,0 +1,18 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+ 	<soap:Body> 
+ 		<tanium_soap_request xmlns="urn:TaniumSOAP"> 
+ 			<auth xmlns=""> 
+ 				<username>%s</username> 
+ 				<password>%s</password> 
+ 			</auth> 
+ 			<command xmlns="">AddObject</command> 
+			<object_list xmlns=""> 
+				<parse_job>
+					<question_text>%s</question_text>
+				</parse_job>
+ 			</object_list> 
+ 			<ID xmlns="">0</ID> 
+ 			<ContextID xmlns="">0</ContextID> 
+ 		</tanium_soap_request> 
+ 	</soap:Body> 
+</soap:Envelope>

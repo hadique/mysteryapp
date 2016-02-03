@@ -1,0 +1,122 @@
+<form>
+  <label>Tanium Application Visibility</label>
+  <row>
+    <panel>
+      <input type="time" token="field1">
+        <label/>
+        <default>
+          <earliestTime>0</earliestTime>
+          <latestTime/>
+        </default>
+      </input>
+      <chart>
+        <title>Rare Running Processes</title>
+        <searchString>sourcetype=tanium splunk-running-processes| rare limit=20 Running_Processes</searchString>
+        <earliestTime>$field1.earliest$</earliestTime>
+        <latestTime>$field1.latest$</latestTime>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Running Applications</title>
+        <searchString>sourcetype="tanium" splunk-running-applications | dedup Name| table Name,Version,Process_Name,Count</searchString>
+        <earliestTime>rt-1h</earliestTime>
+        <latestTime>rt</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Running Processes</title>
+        <searchString>sourcetype="tanium" splunk-running-processes |dedup Running_Processes |table Running_Processes,Count</searchString>
+        <earliestTime>rt-1h</earliestTime>
+        <latestTime>rt</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Running Services</title>
+        <searchString>sourcetype=tanium splunk-Running-Services| dedup Running_Service | table Running_Service,Count</searchString>
+        <earliestTime>rt-1h</earliestTime>
+        <latestTime>rt</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Stopped Services</title>
+        <searchString>sourcetype=tanium splunk-stopped-services | dedup Stopped_Service | table Stopped_Service,Count</searchString>
+        <earliestTime>rt-1h</earliestTime>
+        <latestTime>rt</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Installed Applications</title>
+        <searchString>sourcetype=tanium splunk-installed-applications | dedup Name |table Name,Version,Count</searchString>
+        <earliestTime>@d</earliestTime>
+        <latestTime>now</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Uninstallable Applications</title>
+        <searchString>sourcetype=tanium splunk-uninstallable-applications | dedup Name| table Name,Version,Count</searchString>
+        <earliestTime>@d</earliestTime>
+        <latestTime>now</latestTime>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</form>
