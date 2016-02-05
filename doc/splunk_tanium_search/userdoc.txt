@@ -2,14 +2,14 @@ Documentation for The Splunk-Tanium Search bar functionality
 
 Index:
 
-1) What is the “Splunk-Tanium Search bar functionality”? 
+1) What is the Splunk-Tanium Search bar functionality? 
 2) What does this new functionality do?
 3) What are some use cases?
 4) How do I install the update?
-5) How do I “run a sensor”?
-6) How do I “run a saved question”?
-7) How do I interact with the “nlp parser”?
-8) How do I ask an “nlp” question?
+5) How do I run a sensor?
+6) How do I run a saved question?
+7) How do I interact with the nlp parser?
+8) How do I ask an nlp question?
 9) What are the common arguments to all search bar scripts?
 10) What are some examples?
 
@@ -25,7 +25,7 @@ The scripts use arguments to configure and run on each pass. The arguments will 
 For security reasons these scripts will only be able to ask questions to Tanium. These scripts will not be able to perform actions on hosts. The scripts are also not able to make new sensors or define new saved questions. 
 
 There are currently four main scripts. Each script represents a distinct Tanium search method. The methods represented by the scripts are sensor names, saved searches and the natural language parser. The fourth script is designed to give the user feedback from the natural language parser. All of the scripts are designed to give a similar selection of search options much like being directly on the Tanium console.
-3) Enabling Tanium searches via the Splunk search bar allows for consolidation of consoles and gives access to Splunk’s powerful search, correlation and graph capabilities. Example usage would would include a security operations person hunting for an indicator of compromise. A security operations person can ask all Tanium enabled endpoints to show all current TCP connections. This information can be correlated to a list of Splunk indexed and known bad ip addresses. 
+3) Enabling Tanium searches via the Splunk search bar allows for consolidation of consoles and gives access to Splunks powerful search, correlation and graph capabilities. Example usage would would include a security operations person hunting for an indicator of compromise. A security operations person can ask all Tanium enabled endpoints to show all current TCP connections. This information can be correlated to a list of Splunk indexed and known bad ip addresses. 
 
 Another use would be for an infrastructure operations person getting all hostnames from all computers on the network. The explicit command to execute a natural language search would look like the following. In the search bar enter the command.
 
@@ -54,7 +54,7 @@ g)restart Splunk
 Future releases of the Tanium-Splunk app will have this search functionality included,and no extra installer will be needed. Check with any Tanium TAM on the status of the search bar augment integration in to the Tanium app.
 
 
-5) The tanium_run_sensor script will execute a single or a collection of Tanium sensors. The sensors are run by exact name as shown in the main Tainium console. Multiple sensors can be executed by comma separation. For example --sensors “sensor_a,sensor_b,sensor_c”. The results per sensor are returned in the same order as issued. A listing of all the arguments follow below.
+5) The tanium_run_sensor script will execute a single or a collection of Tanium sensors. The sensors are run by exact name as shown in the main Tainium console. Multiple sensors can be executed by comma separation. For example --sensors sensor_a,sensor_b,sensor_c. The results per sensor are returned in the same order as issued. A listing of all the arguments follow below.
 
 Script Name: tanium_run_sensor
 
@@ -96,7 +96,7 @@ arguments:
   --password    PASSWORD    user password
   --question    QUESTION    nlp question
 
-8) The tanium_nlp script is designed to run a question using natural language. When a user has a question that he or she would like to as the Tanium system, the user asks the question using natural language. For example “What is the CPU information from all hosts” would be a question that the natural language parser would interpret and execute. The NLP system will do its best to interpret what the user has asked of it. To display what was interpreted and run use the --show_parse option.
+8) The tanium_nlp script is designed to run a question using natural language. When a user has a question that he or she would like to as the Tanium system, the user asks the question using natural language. For example What is the CPU information from all hosts would be a question that the natural language parser would interpret and execute. The NLP system will do its best to interpret what the user has asked of it. To display what was interpreted and run use the --show_parse option.
 
 Script Name: tanium_nlp
 
@@ -114,15 +114,15 @@ arguments:
 9) The required arguments that are common to all scripts are the Tanium server, username and password. These without all of these options none of the scripts will run. Note that the Splunk search bar may save previous questions. To improve security reasons be sure to clear search history.
 Another argument that is common, but not required for most scripts is the timeout option. Some Tanium questions may take a while to complete. If the question will take a while increase the timeout value to give the system more time to complete the query.
 
-The “splunk” argument is a TCP connector that will forward the results of the query to a Splunk indexer. What will be indexed is a syslog formatted collection of the results, in a similar format to what is displayed on screen.  
+The splunk argument is a TCP connector that will forward the results of the query to a Splunk indexer. What will be indexed is a syslog formatted collection of the results, in a similar format to what is displayed on screen.  
 
-The “splunk_port” argument is to be used with the “splunk” argument. The “splunk_port” is the TCP port number that the indexer is listing on. 
+The splunk_port argument is to be used with the splunk argument. The splunk_port is the TCP port number that the indexer is listing on. 
 
 If there are any errors when running a query, the code will attempt to display the error in the Splunk search area. Be sure to record all on screen information for debugging. 
 
-10) Some example commands follow. Assume that the Tanium server is running on “localhost” the username is “user” and the password is “user”
+10) Some example commands follow. Assume that the Tanium server is running on localhost the username is user and the password is user
 
-a) Execute the Tanium sensor “Computer Name” and display the results on screen.
+a) Execute the Tanium sensor Computer Name and display the results on screen.
 
 |script python tanium_run_sensor --tanium "127.0.0.1" --user "user" --password "user" --sensor "Computer Name"  --splunk "127.0.0.1"
 
@@ -134,6 +134,6 @@ c) Execute a Tanium search using the natural language parser and display the res
 
 |script python tanium_nlp --tanium "127.0.0.1" --user "user" --password "user" --question "Get Computer Name and Running Processes from all machines"
 
-d) Get a list of possible interpretations of a natural language question from the Tanium natural language parser. A workflow for using this would be to execute the “parse” script first. Select the interpretation that most closely represents what the user would like to do then execute that command by running the “tanium_nlp” script.
+d) Get a list of possible interpretations of a natural language question from the Tanium natural language parser. A workflow for using this would be to execute the parse script first. Select the interpretation that most closely represents what the user would like to do then execute that command by running the tanium_nlp script.
 
 |script python tanium_nlp_parse --tanium "127.0.0.1" --user "user" --password "user" --question "Get Computer Name 
