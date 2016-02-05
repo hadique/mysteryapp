@@ -54,8 +54,11 @@ version = 6.1.2
 modtime = 1408739789.576709200
 
 [nav/default]
-version = 6.1.2
-modtime = 1408741206.961711200
+access = read : [ * ], write : [ admin ]
+export = none
+owner = nobody
+version = 6.3.2
+modtime = 1454700159.660893000
 
 [views/data_leakage]
 access = read : [ * ], write : [ admin, power ]
@@ -63,3 +66,82 @@ export = none
 owner = admin
 version = 6.1.2
 modtime = 1410198474.116599100
+
+[inputs/udp%3A%2F%2F1514]
+owner = admin
+version = 6.3.2
+modtime = 1454604273.742956000
+
+[props/tanium/EXTRACT-actions]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454636790.237669000
+
+[props/tanium]
+version = 6.3.2
+modtime = 1454633595.527748000
+
+[transforms/action_transform]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454688017.660033000
+
+[props/tanium/REPORT-action_transformer]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454676809.514136000
+
+[transforms/audit_transformation]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454690019.406893000
+
+[props/tanium/REPORT-audit_transformer]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454685908.168735000
+
+[transforms/question_transform]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454692152.913070000
+
+[props/tanium/REPORT-question_transformer]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454691998.385668000
+
+[transforms/audit_transform]
+access = read : [ * ], write : [ * ]
+export = none
+owner = nobody
+version = 6.3.2
+modtime = 1454692176.253131000
+
+[tags/eventtype%3Dtanium_asked_question]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454699616.186370000
+
+[eventtypes/tanium_asked_question]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.3.2
+modtime = 1454699616.151370000
