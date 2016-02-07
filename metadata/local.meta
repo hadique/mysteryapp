@@ -56,7 +56,7 @@ modtime = 1408739789.576709200
 [nav/default]
 access = read : [ * ], write : [ admin ]
 export = none
-owner = nobody
+owner = admin
 version = 6.3.2
 modtime = 1454700159.660893000
 
@@ -145,3 +145,20 @@ export = none
 owner = admin
 version = 6.3.2
 modtime = 1454699616.151370000
+
+[props/tanium_client_log]
+owner = admin
+version = 6.3.2
+modtime = 1454783140.577115000
+
+[app/ui]
+version = 6.3.2
+modtime = 1454784505.386074000
+
+[app/launcher]
+version = 6.3.2
+modtime = 1454784505.390074000
+
+[app/package/check_for_updates]
+version = 6.3.2
+modtime = 1454784505.393074000
